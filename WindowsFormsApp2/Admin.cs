@@ -12,7 +12,7 @@ namespace WindowsFormsApp2
 {
     public partial class Admin : Form
     {
-       
+       // this is login
         private Form Login;
         public Admin(Form Login)
         {
