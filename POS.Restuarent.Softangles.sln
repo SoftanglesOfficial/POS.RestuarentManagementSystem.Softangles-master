@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POS", "WindowsFormsApp2\POS.csproj", "{404469FA-DDA2-4C95-86CF-F7FDC547CA53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "Data\DataLayer.csproj", "{66E024FF-0357-47D7-8D15-B3E250895AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "Domain\BusinessLayer.csproj", "{F72A7107-A35F-49ED-96A6-9DAF02F500F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{404469FA-DDA2-4C95-86CF-F7FDC547CA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404469FA-DDA2-4C95-86CF-F7FDC547CA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404469FA-DDA2-4C95-86CF-F7FDC547CA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404469FA-DDA2-4C95-86CF-F7FDC547CA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66E024FF-0357-47D7-8D15-B3E250895AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66E024FF-0357-47D7-8D15-B3E250895AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66E024FF-0357-47D7-8D15-B3E250895AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66E024FF-0357-47D7-8D15-B3E250895AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72A7107-A35F-49ED-96A6-9DAF02F500F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72A7107-A35F-49ED-96A6-9DAF02F500F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72A7107-A35F-49ED-96A6-9DAF02F500F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72A7107-A35F-49ED-96A6-9DAF02F500F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6265913D-59FB-472B-A597-B1F953F74487}
+	EndGlobalSection
+EndGlobal

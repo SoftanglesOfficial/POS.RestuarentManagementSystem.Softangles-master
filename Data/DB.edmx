@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RMSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CashierTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CashierId" Type="int" Nullable="false" />
+          <Property Name="CurrentDay" Type="datetime" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="TotalHour" Type="float" />
+        </EntityType>
+        <EntityType Name="Login_Tbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Login_Date" Type="datetime" Nullable="false" />
+          <Property Name="Last_Login_Date" Type="datetime" Nullable="false" />
+          <Property Name="Expiration_Date" Type="datetime" Nullable="false" />
+          <Property Name="IsAuthenticated" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="menuCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="menuItems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_id" Type="int" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="itemName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="section_id" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="discountpercnt" Type="float" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="quantity" Type="float" Nullable="false" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Aed_Vat" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POS_Tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Pic" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="R_Tables">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="capacity" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="filled" Type="int" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Sale_Id" />
+          </Key>
+          <Property Name="Sale_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="OrderType" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Balance" Type="float" Nullable="false" />
+          <Property Name="TicketNote" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDeleted" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsBillPending" Type="int" />
+          <Property Name="cashier_id" Type="int" Nullable="false" />
+          <Property Name="day" Type="datetime" Nullable="false" />
+          <Property Name="ReceivedAmount" Type="float" />
+          <Property Name="RemainingBalance" Type="float" />
+          <Property Name="NumberOfPerson" Type="int" Nullable="false" />
+          <Property Name="TAX" Type="float" Nullable="false" />
+          <Property Name="IsRefund" Type="int" Nullable="false" />
+          <Property Name="Cahier_Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SaleDetail">
+          <Key>
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="itemName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="TicketNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Aed_Vat" Type="float" Nullable="false" />
+          <Property Name="Aed_Vat_Amount" Type="float" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="section">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sectionname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stock_Tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subcription_Tbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubcriptionKey" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserTyoe" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ForeignId" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsAdmin" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="GetTablesOnChangeing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TicketNo" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="RMSDBModelStoreContainer">
+          <EntitySet Name="CashierTable" EntityType="Self.CashierTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login_Tbl" EntityType="Self.Login_Tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menuCategory" EntityType="Self.menuCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menuItems" EntityType="Self.menuItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Tbl" EntityType="Self.POS_Tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_Tables" EntityType="Self.R_Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleDetail" EntityType="Self.SaleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="section" EntityType="Self.section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock_Tbl" EntityType="Self.Stock_Tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subcription_Tbl" EntityType="Self.Subcription_Tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RMSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CashierTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CashierId" Type="Int32" Nullable="false" />
+          <Property Name="CurrentDay" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="TotalHour" Type="Double" />
+        </EntityType>
+        <EntityType Name="menuCategory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="menuItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_id" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="itemName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="section_id" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="discountpercnt" Type="Double" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="quantity" Type="Double" Nullable="false" />
+          <Property Name="barcode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aed_Vat" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="R_Tables">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="capacity" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="filled" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Sale_Id" />
+          </Key>
+          <Property Name="Sale_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TableName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Balance" Type="Double" Nullable="false" />
+          <Property Name="TicketNote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsBillPending" Type="Int32" />
+          <Property Name="cashier_id" Type="Int32" Nullable="false" />
+          <Property Name="day" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReceivedAmount" Type="Double" />
+          <Property Name="RemainingBalance" Type="Double" />
+          <Property Name="NumberOfPerson" Type="Int32" Nullable="false" />
+          <Property Name="TAX" Type="Double" Nullable="false" />
+          <Property Name="IsRefund" Type="Int32" Nullable="false" />
+          <Property Name="Cahier_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="section">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sectionname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAdmin" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="RMSDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CashierTables" EntityType="Self.CashierTable" />
+          <EntitySet Name="menuCategories" EntityType="Self.menuCategory" />
+          <EntitySet Name="menuItems" EntityType="Self.menuItem" />
+          <EntitySet Name="R_Tables" EntityType="Self.R_Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="sections" EntityType="Self.section" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <FunctionImport Name="GetTablesOnChangeing" ReturnType="Collection(RMSDBModel.GetTablesOnChangeing_Result)">
+          <Parameter Name="TicketNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Stock_Tbl" EntityType="RMSDBModel.Stock_Tbl" />
+          <EntitySet Name="POS_Tbl" EntityType="RMSDBModel.POS_Tbl" />
+          <EntitySet Name="SaleDetails" EntityType="RMSDBModel.SaleDetail" />
+          <EntitySet Name="Login_Tbl" EntityType="RMSDBModel.Login_Tbl" />
+          <EntitySet Name="Subcription_Tbl" EntityType="RMSDBModel.Subcription_Tbl" />
+        </EntityContainer>
+        <ComplexType Name="GetTablesOnChangeing_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="capacity" Nullable="false" />
+          <Property Type="Boolean" Name="status" Nullable="false" />
+          <Property Type="Int32" Name="filled" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Stock_Tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POS_Tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Pic" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SaleDetail">
+          <Key>
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="itemName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="Quantity" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="TicketNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Aed_Vat" Type="Double" Nullable="false" />
+          <Property Name="Aed_Vat_Amount" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Login_Tbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Login_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Last_Login_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Expiration_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAuthenticated" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subcription_Tbl">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubcriptionKey" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserTyoe" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ForeignId" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RMSDBModelStoreContainer" CdmEntityContainer="RMSDBEntities">
+          <EntitySetMapping Name="CashierTables">
+            <EntityTypeMapping TypeName="RMSDBModel.CashierTable">
+              <MappingFragment StoreEntitySet="CashierTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CashierId" ColumnName="CashierId" />
+                <ScalarProperty Name="CurrentDay" ColumnName="CurrentDay" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="TotalHour" ColumnName="TotalHour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menuCategories">
+            <EntityTypeMapping TypeName="RMSDBModel.menuCategory">
+              <MappingFragment StoreEntitySet="menuCategory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="color" ColumnName="color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menuItems">
+            <EntityTypeMapping TypeName="RMSDBModel.menuItem">
+              <MappingFragment StoreEntitySet="menuItems">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="section_id" ColumnName="section_id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="discountpercnt" ColumnName="discountpercnt" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="Aed_Vat" ColumnName="Aed_Vat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_Tables">
+            <EntityTypeMapping TypeName="RMSDBModel.R_Tables">
+              <MappingFragment StoreEntitySet="R_Tables">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="filled" ColumnName="filled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="RMSDBModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="Sale_Id" ColumnName="Sale_Id" />
+                <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TicketNote" ColumnName="TicketNote" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="IsBillPending" ColumnName="IsBillPending" />
+                <ScalarProperty Name="cashier_id" ColumnName="cashier_id" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="ReceivedAmount" ColumnName="ReceivedAmount" />
+                <ScalarProperty Name="RemainingBalance" ColumnName="RemainingBalance" />
+                <ScalarProperty Name="NumberOfPerson" ColumnName="NumberOfPerson" />
+                <ScalarProperty Name="TAX" ColumnName="TAX" />
+                <ScalarProperty Name="IsRefund" ColumnName="IsRefund" />
+                <ScalarProperty Name="Cahier_Name" ColumnName="Cahier_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sections">
+            <EntityTypeMapping TypeName="RMSDBModel.section">
+              <MappingFragment StoreEntitySet="section">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sectionname" ColumnName="sectionname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="RMSDBModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetTablesOnChangeing" FunctionName="RMSDBModel.Store.GetTablesOnChangeing">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RMSDBModel.GetTablesOnChangeing_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="filled" ColumnName="filled" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Stock_Tbl">
+            <EntityTypeMapping TypeName="RMSDBModel.Stock_Tbl">
+              <MappingFragment StoreEntitySet="Stock_Tbl">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Tbl">
+            <EntityTypeMapping TypeName="RMSDBModel.POS_Tbl">
+              <MappingFragment StoreEntitySet="POS_Tbl">
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleDetails">
+            <EntityTypeMapping TypeName="RMSDBModel.SaleDetail">
+              <MappingFragment StoreEntitySet="SaleDetail">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Aed_Vat_Amount" ColumnName="Aed_Vat_Amount" />
+                <ScalarProperty Name="Aed_Vat" ColumnName="Aed_Vat" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="TicketNo" ColumnName="TicketNo" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login_Tbl">
+            <EntityTypeMapping TypeName="RMSDBModel.Login_Tbl">
+              <MappingFragment StoreEntitySet="Login_Tbl">
+                <ScalarProperty Name="IsAuthenticated" ColumnName="IsAuthenticated" />
+                <ScalarProperty Name="Expiration_Date" ColumnName="Expiration_Date" />
+                <ScalarProperty Name="Last_Login_Date" ColumnName="Last_Login_Date" />
+                <ScalarProperty Name="First_Login_Date" ColumnName="First_Login_Date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subcription_Tbl">
+            <EntityTypeMapping TypeName="RMSDBModel.Subcription_Tbl">
+              <MappingFragment StoreEntitySet="Subcription_Tbl">
+                <ScalarProperty Name="ForeignId" ColumnName="ForeignId" />
+                <ScalarProperty Name="UserTyoe" ColumnName="UserTyoe" />
+                <ScalarProperty Name="SubcriptionKey" ColumnName="SubcriptionKey" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
